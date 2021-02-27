@@ -39,14 +39,19 @@ const inquirer = require('inquirer');
         }
       },
       {
+        type: 'confirm',
+        name: 'confirmAbout',
+        message: 'Would you like to enter some information about yourself for an "About" section?',
+        default: true
+      },
+      {
         type: 'input',
         name: 'about',
         message: 'Provide information about yourself (Required):',
-        validate: aboutInput => {
-          if (aboutInput) {
+        when: ({confirmAbout}) => {
+          if (confirmAbout) {
             return true;
           } else {
-            console.log('Please enter information about yourself!');
             return false;
           }
         }

@@ -15,17 +15,41 @@ const inquirer = require('inquirer');
       {
         type: 'input',
         name: 'name',
-        message: 'What is your name?'
+        message: 'What is your name? (Required)',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log('Please enter your name! (Required)');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'github',
-        message: 'Enter your GitHub Username'
+        message: 'Enter your GitHub Username (Required)',
+        validate: usernameInput => {
+          if (usernameInput) {
+            return true;
+          } else {
+            console.log('Please enter your GitHub username!');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'about',
-        message: 'Provide information about yourself:'
+        message: 'Provide information about yourself (Required):',
+        validate: aboutInput => {
+          if (aboutInput) {
+            return true;
+          } else {
+            console.log('Please enter information about yourself!');
+            return false;
+          }
+        }
       }
     ]);
   };
